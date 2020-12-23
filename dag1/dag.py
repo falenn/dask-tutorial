@@ -19,6 +19,9 @@ def main():
     step2 = [delayed(multiply_four)(j) for j in step1]
     total = delayed(sum)(step2)
     total.visualize()
+    data2 = [delayed(sum_two_numbers)(k,total) for k in data]
+    total2 = delayed(sum)(data2)
+    total2.visualize()
 
 if __name__ == "__main__":
     main()
