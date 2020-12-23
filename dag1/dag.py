@@ -18,10 +18,11 @@ def main():
     step1 = [delayed(add_two)(i) for i in data]
     step2 = [delayed(multiply_four)(j) for j in step1]
     total = delayed(sum)(step2)
-    total.visualize()
-    data2 = [delayed(sum_two_numbers)(k,total) for k in data]
+    total_persisted = total.persist()
+    total_persisted.visualize("total1") 
+    data2 = [delayed(sum_two_numbers)(k,total_persisted) for k in data]
     total2 = delayed(sum)(data2)
-    total2.visualize()
+    total2.visualize("total2")
 
 if __name__ == "__main__":
     main()
