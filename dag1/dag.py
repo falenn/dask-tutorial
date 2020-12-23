@@ -19,7 +19,8 @@ def main():
     step2 = [delayed(multiply_four)(j) for j in step1]
     total = delayed(sum)(step2)
     total_persisted = total.persist()
-    total_persisted.visualize("total1") 
+    total_persisted.visualize("total_persisted")
+    total.visualize("total1") 
     data2 = [delayed(sum_two_numbers)(k,total_persisted) for k in data]
     total2 = delayed(sum)(data2)
     total2.visualize("total2")
